@@ -1,0 +1,63 @@
+﻿@model OnlineCinema.Web.Models.Domain.Ticket
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Ticket</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label for="TicketName" class="form-label">Ticket Name</label>
+                <input asp-for="TicketName" class="form-control" id="TicketName" />
+                <span asp-validation-for="TicketName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label for="TicketDescription" class="form-label">Ticket Description</label>
+                <input asp-for="TicketDescription" class="form-control" id="TicketDescription" />
+                <span asp-validation-for="TicketDescription" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label for="TicketImage" class="form-label">Ticket Image</label>
+                <input asp-for="TicketImage" class="form-control" id="TicketImage" />
+                <span asp-validation-for="TicketImage" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label for="TicketPrice" class="form-label">Ticket Price</label>
+                <input asp-for="TicketPrice" class="form-control" id="TicketPrice" />
+                <span asp-validation-for="TicketPrice" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label for="Rating" class="form-label">Rating</label>
+                <input asp-for="Rating" class="form-control" id="Rating" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label for="DateTime" class="form-label">Date Time</label>
+                <input asp-for="DateTime" class="form-control" id="DateTime" />
+                <span asp-validation-for="DateTime" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

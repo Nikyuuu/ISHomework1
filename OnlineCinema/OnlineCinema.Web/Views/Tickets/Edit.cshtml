@@ -1,0 +1,55 @@
+﻿@model OnlineCinema.Web.Models.Domain.Ticket
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Edit the Ticket</h1>
+
+<hr />
+
+<div class="row">
+  <div class="col-md-4">
+    <form asp-action="Edit">
+     <input type="hidden" asp-for="Id" />
+      <div class="mb-3">
+                <label asp-for="TicketName" class="form-label">Ticket Name</label>
+                <input asp-for="TicketName" class="form-control" required>
+      </div>
+      <div class="mb-3">
+                <label asp-for="TicketDescription" class="form-label">Ticket Description</label>
+                <input asp-for="TicketDescription" class="form-control" required>
+      </div>
+      <div class="mb-3">
+                <label asp-for="TicketImage" class="form-label">Ticket Image</label>
+                <input asp-for="TicketImage" class="form-control" required>
+      </div>
+      <div class="mb-3">
+                <label asp-for="TicketPrice" class="form-label">Ticket Price</label>
+                <input asp-for="TicketPrice" class="form-control" required>
+      </div>
+      <div class="mb-3">
+                <label asp-for="Rating" class="form-label">Rating</label>
+                <input asp-for="Rating" class="form-control" required>
+      </div>
+      <div class="mb-3">
+                <label asp-for="DateTime" class="form-label">Date and Time</label>
+                <input asp-for="DateTime" class="form-control" required>
+      </div>
+      <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button asp-action="Delete" type="submit" class="btn btn-danger">Delete</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

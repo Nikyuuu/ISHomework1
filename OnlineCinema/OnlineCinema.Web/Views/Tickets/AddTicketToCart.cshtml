@@ -1,0 +1,35 @@
+﻿@model OnlineCinema.Web.Models.DTO.AddToShoppingCartDto
+
+
+@{
+    ViewData["Title"] = "Add to Shopping Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add Selected Ticket To Shopping Cart</h1>
+
+<hr/>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="AddTicketToCart" method="post">
+                <input type="hidden" asp-for="TicketId" />
+                <div class="mb-3">
+                    <label for="TicketName" class="form-label">Ticket Name</label>
+                    <input disabled asp-for="SelectedTicket.TicketName" class="form-control form-control-sm" id="TicketName" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="Quantity" class="form-label">Quantity</label>
+                    <input asp-for="Quantity" class="form-control form-control-sm" id="Quantity" />
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

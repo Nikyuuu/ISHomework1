@@ -1,0 +1,112 @@
+﻿@model List<OnlineCinema.Web.Models.Domain.Ticket>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+  body {
+    background-color: #f8f9fa;
+  }
+
+  h1 {
+    color: #007bff;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .card {
+    border-radius: 1.5rem;
+    transition: transform .2s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-img-top {
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    object-fit: cover;
+  }
+
+  .card-title {
+    font-weight: bold;
+    color: #212529;
+  }
+
+  .card-text {
+    color: #6c757d;
+  }
+
+  .btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color .2s ease-in-out;
+  }
+
+  .btn-info:hover {
+    background-color: #138496;
+    border-color: #138496;
+  }
+
+  .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color .2s ease-in-out;
+  }
+
+  .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+  }
+</style>
+
+
+<h1>Tickets:</h1>
+<div class="container">
+    <div class="m-3">
+        <a class="btn btn-success" asp-controller="Tickets" asp-action="Create">Add new Ticket</a>
+    </div>
+
+    <form method="post" style="margin: 20px;">
+        <div class="row">
+            <span for="FilterDate">Check Which Movies Are Available:&emsp;</span>
+            <input class="form-control w-25" type="date" name="FilterDate" id="FilterDate" />
+            <div class="col-1">
+                <button class="btn btn-success btn-block" type="submit">Filter</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card" style="width: 20rem; height: auto;">
+                    <img class="card-img-top" src="@item.TicketImage" style="height: 50%" alt="Image for Ticket!" />
+
+                    <div class="card-body">
+                        <h3 class="card-title">@item.TicketName</h3>
+                        <p class="card-text">@item.TicketDescription</p>
+                        <h4>Premiere:</h4>
+                        <h5 class="card-text">Date: @item.DateTime</h5>
+
+                        <h6>Price: @item.TicketPrice $</h6>
+                    </div>
+
+                    <div class="card-footer d-flex justify-content-between">
+                        <a asp-controller="Tickets" asp-action="AddTicketToCart" asp-route-id="@item.Id" class="btn btn-info mr-2">Add to Card</a>
+                        <a asp-controller="Tickets" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary ml-2">Edit</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

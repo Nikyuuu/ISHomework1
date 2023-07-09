@@ -1,0 +1,97 @@
+﻿@model OnlineCinema.Web.Models.Domain.Idenitity.UserRegistrationDto
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    .container {
+        margin-top: 100px;
+    }
+
+    .signup-form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    .form-control {
+        border: none;
+        border-bottom: 2px solid #ccc;
+        padding: 10px;
+        font-size: 16px;
+        outline: none;
+        transition: all 0.3s;
+        background-color: transparent;
+        color: #000;
+    }
+
+        .form-control:focus {
+            border-bottom-color: #6c757d;
+        }
+
+    .form-group label {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        font-size: 14px;
+        color: #6c757d;
+        transition: all 0.3s;
+    }
+
+    .form-group .form-control:focus + label,
+    .form-group .form-control:not(:placeholder-shown) + label {
+        top: -25px;
+        font-size: 14px;
+        color: #6c757d;
+    }
+
+    .form-group .text-danger {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .form-group .btn-primary {
+        margin-top: 15px;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <h1 class="text-center mb-4">Register</h1>
+            <!-- Shift2Html.ValidationSummary() -->
+
+            <form asp-action="Register" asp-controller="Account" method="post" class="signup-form">
+
+                <div class="form-group">
+                    <input asp-for="@Model.Email" class="form-control" />
+                    <label asp-for="@Model.Email">Email</label>
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <input asp-for="@Model.Password" type="password" class="form-control" />
+                    <label asp-for="@Model.Password">Password</label>
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <input asp-for="@Model.ConfirmPassword" type="password" class="form-control" />
+                    <label asp-for="@Model.ConfirmPassword">Confirm Password</label>
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
